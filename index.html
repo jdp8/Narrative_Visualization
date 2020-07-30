@@ -6,7 +6,7 @@
     <script>
       var data = [4,12,15,16,36,42];
       var svg = d3.select("body").append("svg").attr("width",300).attr("height",300);
-      svg.selectAll("rect").data(data).enter.append("rect").attr("height",20).attr("width",20).attr("x", 10).attr("y", 10);
+      svg.selectAll("rect").data(data).enter().append("rect").attr("height",20).attr("width",20).attr("x", 10).attr("y", 10);
     </script>
   </body>
 </html>
