@@ -1,8 +1,9 @@
+<!-- Code from d3-graph-gallery.com -->
 <!DOCTYPE html>
 <script src="https://d3js.org/d3.v4.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
-<svg></svg>
+<div></div>
 
 <!-- A bit of CSS: change stroke color of circle on hover (white -> black) -->
 <style>
@@ -19,13 +20,19 @@
 var margin = {top: 10, right: 20, bottom: 30, left: 50},
     width = 500 - margin.left - margin.right,
     height = 420 - margin.top - margin.bottom;
-  
-var svg = d3.select("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
-  .append("g").attr("transform",
+
+// append the svg object to the body of the page
+var svg = d3.select("div")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
-  
+
 d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/4_ThreeNum.csv", function(data) {
-  
+
+  // Add X axis
   var x = d3.scaleLinear()
     .domain([0, 12000])
     .range([ 0, width ]);
@@ -33,6 +40,7 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
 
+  // Add Y axis
   var y = d3.scaleLinear()
     .domain([35, 90])
     .range([ height, 0]);
@@ -50,7 +58,11 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
     .range(d3.schemeSet2);
 
   // -1- Create a tooltip div that is hidden by default:
-  var tooltip = d3.select("svg").append("div").style("opacity", 0).attr("class", "tooltip").style("background-color", "black")
+  var tooltip = d3.select("div")
+    .append("div")
+      .style("opacity", 0)
+      .attr("class", "tooltip")
+      .style("background-color", "black")
       .style("border-radius", "5px")
       .style("padding", "10px")
       .style("color", "white")
