@@ -47,7 +47,8 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
   // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
   var showTooltip = function(d) {
     tooltip.transition().duration(200)
-    tooltip.style("opacity",1).html("Continent: " + d.continent + "<br>Country: " + d.country + "<br>Population: " + d3.format(",")(d.pop))
+    tooltip.style("opacity",1).html("Continent: " + d.continent + "<br>Country: " + d.country + "<br>Population: " + d3.format(",")(d.pop) + 
+                                   "<br>Life Expectancy: " + d.lifeExp + "<br>GDP Per Capita: " + d3.format(",")(d.gdpPercap))
       .style("left",(d3.mouse(this)[0]+30) + "px")
       .style("top",(d3.mouse(this)[1]+30) + "px")
   }
