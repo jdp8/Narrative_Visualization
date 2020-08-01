@@ -26,6 +26,9 @@
   <button type="button" onclick="changeText(3)">Scene 3</button>
 </div>
 <div id="svg_container"></div>
+<div id="scene_text_div">
+  <p id="scene_text">Click on the scene buttons to advance the story</p>
+</div>
 
 <script>
 function changeText(n) {
@@ -94,7 +97,4 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
     .on("mousemove",moveTooltip)
     .on("mouseleave",hideTooltip)
   })
-  
-  svg.append("div").attr("id","scene_text_div").append("text").attr("id","scene_text").
-  text("Click on the scene buttons to advance the story");
 </script>
