@@ -63,7 +63,7 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
 
   // Add dots
   svg.append('g').selectAll("dot").data(data).enter().append("circle").attr("class","bubbles")
-      .attr("cx",function(d) { return (x(d.mpg); } )
+      .attr("cx",function(d) { return x(d.mpg); } )
       .attr("cy",function(d) { return y(d.cyl); } )
       .attr("r",function(d) { return 2; } )
    //   .attr("r",function(d) { return z(d.pop); } )
