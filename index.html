@@ -47,6 +47,7 @@ d3.csv("https://flunky.github.io/cars2017.csv",function(data) {
 
   // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
   var showTooltip = function(d) {
+    console.log(d);
     tooltip.transition().duration(200)
     tooltip.style("opacity",1).html("Make: " + d.make + "<br>Fuel: " + d.Fuel + "<br>Engine Cylinders: " + d.engineCylinders + 
                                    "<br>Average Highway MPG: " + d.averageHighwayMPG + "<br>Average City MPG: " + d.averageCityMPG)
