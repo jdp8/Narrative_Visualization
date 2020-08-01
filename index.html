@@ -15,7 +15,7 @@
 }
 #scene_text_div {
   position: absolute;
-  top: 300px;
+  top: 280px;
   left: 130px;
   width: 170px;
   word-wrap: break-word;
@@ -39,13 +39,13 @@ function changeText(n) {
       var text = document.getElementById("scene_text");
       if(n == 1) {
           text.textContent = "This dataset shows that usually if a car has more cylinders then it will offer less miles per gallon"+
-          "thus making it less fuel efficient";
+          "thus making it less fuel efficient.";
       }
       else if(n == 2) {
-          text.textContent = "Usually if a car has more cylinders, then it will generate more horsepower as shown by the size of the dots";
+          text.textContent = "Usually if a car has more cylinders, then it will generate more horsepower as shown by the size of the dots.";
       }
       else if(n == 3) {
-          text.textContent = "Mouseover the data to see additional information about the cars";
+          text.textContent = "Mouseover the data to see additional information about the cars.";
       }
 }
   
@@ -92,7 +92,7 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
     tooltip.transition().duration(200).style("opacity",0)
   }
 
-  // Add dots
+  // Add circles
   svg.append('g').selectAll("dot").data(data).enter().append("circle").attr("class","bubbles")
       .attr("cx",function(d) { return x(d.cyl); } )
       .attr("cy",function(d) { return y(d.mpg); } )
