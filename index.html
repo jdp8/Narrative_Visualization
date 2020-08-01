@@ -9,6 +9,10 @@
 .bubbles:hover {
   stroke: black;
 }
+#buttons_container {
+  position:absolute;
+  right:220px;
+}
 </style>
 <div id="buttons_container">
   <button type="button" onclick="alert('Hello world!')">Scene 1</button>
@@ -37,7 +41,7 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
   svg.append("text").attr("x",-235).attr("y",-25).style("text-anchor","middle").text("MPG").attr("transform","rotate(-90)");
 
   // Add a scale for bubble size
-  var z = d3.scaleLinear().domain([1,300]).range([7,15]);
+  var z = d3.scaleLinear().domain([1,300]).range([7,12]);
 
   // Add a scale for bubble color
 //  var myColor = d3.scaleOrdinal().domain(["Asia","Europe","Americas","Africa","Oceania"])
