@@ -21,6 +21,7 @@ var svg = d3.select("div").append("svg").attr("width",width + margin.left + marg
   .append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv("https://flunky.github.io/cars2017.csv",function(data) {
+  console.log(data);
   // Add X axis
   var x = d3.scaleLinear().domain([0,200]).range([0,width]);
   svg.append("g").attr("transform","translate(0," + height + ")").call(d3.axisBottom(x));
