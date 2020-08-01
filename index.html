@@ -94,5 +94,6 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
     .on("mouseleave",hideTooltip)
   })
   
-  svg.append("div").attr("id","scene_text_div").append("text").attr("x",120).attr("y",320).attr("id","scene_text").text("Click on the scene buttons to advance the story");
+  svg.append("div").attr("id","scene_text_div").attr("x",120).attr("y",320).append("text").attr("id","scene_text").
+  text("Click on the scene buttons to advance the story");
 </script>
