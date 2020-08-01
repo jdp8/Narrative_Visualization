@@ -21,6 +21,9 @@
   width: 170px;
   word-wrap: break-word;
 }
+#scene_text {
+  font-weight: bold;
+} 
 </style>
 <div id="buttons_container">
   <button type="button" onclick="changeText(1)">Scene 1</button>
@@ -29,20 +32,20 @@
 </div>
 <div id="svg_container"></div>
 <div id="scene_text_div">
-  <p id="scene_text"><b>Click on the scene buttons to advance the story</b></p>
+  <p id="scene_text">Click on the scene buttons to advance the story</p>
 </div>
 
 <script>
 function changeText(n) {
       var text = document.getElementById("scene_text");
       if(n == 1) {
-          text.textContent = "<b>This dataset shows that usually if a car has more cylinders then it will offer less miles per gallon</b>";
+          text.textContent = "This dataset shows that usually if a car has more cylinders then it will offer less miles per gallon";
       }
       else if(n == 2) {
-          text.textContent = "<b>Usually if a car has more cylinders, then it will generate more horsepower as shown by the size of the dots</b>";
+          text.textContent = "Usually if a car has more cylinders, then it will generate more horsepower as shown by the size of the dots";
       }
       else if(n == 3) {
-          text.textContent = "<b>Mouseover the data to see additional information about the cars</b>";
+          text.textContent = "Mouseover the data to see additional information about the cars";
       }
 }
   
