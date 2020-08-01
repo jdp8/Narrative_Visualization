@@ -12,18 +12,20 @@
 #buttons_container {
   position: absolute;
   left: 145px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
 </style>
 <div id="buttons_container">
-  <button type="button" onclick="alert('Hello world!')">Scene 1</button>
-  <button type="button" onclick="alert('Hello world!')">Scene 2</button>
-  <button type="button" onclick="alert('Hello world!')">Scene 3</button>
+  <button type="button" onclick="changeText(1)">Scene 1</button>
+  <button type="button" onclick="changeText(2)">Scene 2</button>
+  <button type="button" onclick="changeText(3)">Scene 3</button>
 </div>
 <div id="svg_container"></div>
 
 <script>
 function changeText(n) {
+      var text = document.getElementById("scene_text");
+  console.log(text);
       if(n == 1) {
 
       }
@@ -32,7 +34,7 @@ function changeText(n) {
       }
       else if(n == 3) {
 
-       }
+      }
 }
   
 var margin = {top:10,right:20,bottom:30,left:50},
@@ -88,4 +90,6 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
     .on("mousemove",moveTooltip)
     .on("mouseleave",hideTooltip)
   })
+  
+  svg.append("text").attr("x",50).attr("y",50).attr("id","scene_text").style("text-anchor","middle").text("Sample Text Jiji");
 </script>
