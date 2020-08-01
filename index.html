@@ -12,7 +12,6 @@
 #buttons_container {
   position: absolute;
   left: 145px;
-  padding-bottom: 40px;
 }
 #scene_text_div {
   position: absolute;
@@ -39,7 +38,8 @@
 function changeText(n) {
       var text = document.getElementById("scene_text");
       if(n == 1) {
-          text.textContent = "This dataset shows that usually if a car has more cylinders then it will offer less miles per gallon";
+          text.textContent = "This dataset shows that usually if a car has more cylinders then it will offer less miles per gallon"+
+          "thus making it less fuel efficient";
       }
       else if(n == 2) {
           text.textContent = "Usually if a car has more cylinders, then it will generate more horsepower as shown by the size of the dots";
@@ -80,7 +80,7 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
   var showTooltip = function(d) {
     tooltip.transition().duration(200)
     tooltip.style("opacity",1).html("Make: " + d[""] + "<br>Horsepower: " + d.hp + "<br>Engine Cylinders: " + d.cyl + 
-                                   "<br>MPG: " + d.mpg + "<br>Weight (lbs): " + d3.format(",")(d.wt*1000) + "<br>Quarter of a mile time (seconds): " + 
+                                   "<br>MPG: " + d.mpg + "<br>Weight (lbs): " + d3.format(",")(d.wt*1000) + "<br>1/4 mile time (seconds): " + 
                                    d.qsec)
       .style("left",(d3.mouse(this)[0]+30) + "px")
       .style("top",(d3.mouse(this)[1]+30) + "px")
