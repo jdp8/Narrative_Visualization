@@ -26,13 +26,13 @@
 function changeText(n) {
       var text = document.getElementById("scene_text");
       if(n == 1) {
-          text.textContent = "Y yo le dije Yandel";
+          text.textContent = "This dataset shows that usually if a car has more cylinders then it will offer less miles per gallon";
       }
       else if(n == 2) {
-          text.textContent = "Ella dijo no puede ser";
+          text.textContent = "Usually if a car has more cylinders, then it will generate more horsepower as shown by the size of the dots";
       }
       else if(n == 3) {
-          text.textContent = "";
+          text.textContent = "Mouseover the data to see additional information about the cars";
       }
 }
   
@@ -90,5 +90,5 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
     .on("mouseleave",hideTooltip)
   })
   
-  svg.append("text").attr("x",50).attr("y",50).attr("id","scene_text").style("text-anchor","middle").text("Sample Text Jiji");
+  svg.append("text").attr("x",120).attr("y",320).attr("id","scene_text").style("text-anchor","middle").text("Click on the scene buttons to advance the story");
 </script>
