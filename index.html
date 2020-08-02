@@ -80,7 +80,7 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
 
   var showTooltip = function(d) {
     tooltip.transition().duration(200)
-    tooltip.style("opacity",1).html("Make: " + d[""] + "<br>Horsepower: " + d.hp + "<br>Engine Cylinders: " + d.cyl + 
+    tooltip.style("opacity",1).html("Car make and model: " + d[""] + "<br>Horsepower: " + d.hp + "<br>Engine cylinders: " + d.cyl + 
                                    "<br>MPG: " + d.mpg + "<br>Weight (lbs): " + d3.format(",")(d.wt*1000) + "<br>1/4 mile time (seconds): " + 
                                    d.qsec)
       .style("left",(d3.mouse(this)[0]+30) + "px")
