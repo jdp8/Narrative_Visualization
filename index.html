@@ -60,11 +60,11 @@ var svg = d3.select("#svg_container").append("svg").attr("width",width + margin.
 d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b999fb4425b54c63cab088c0ce2c0d6ce961a563/cars.csv",function(data) {
   var x = d3.scaleLinear().domain([0,10]).range([0,width]);
   svg.append("g").attr("transform","translate(0," + height + ")").call(d3.axisBottom(x));
-  svg.append("text").attr("x",220).attr("y",460).style("text-anchor","middle").text("Engine Cylinders");
+  svg.append("text").attr("x",220).attr("y",460).style("text-anchor","middle").text("Number of Engine Cylinders");
 
   var y = d3.scaleLinear().domain([0,36]).range([height,0]);
   svg.append("g").call(d3.axisLeft(y));
-  svg.append("text").attr("x",-235).attr("y",-25).style("text-anchor","middle").text("MPG").attr("transform","rotate(-90)");
+  svg.append("text").attr("x",-235).attr("y",-25).style("text-anchor","middle").text("Miles per Gallon").attr("transform","rotate(-90)");
 
   // Add a scale for bubble size
   var z = d3.scaleLinear().domain([1,300]).range([7,12]);
