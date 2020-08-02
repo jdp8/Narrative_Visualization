@@ -62,7 +62,7 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
   svg.append("g").attr("transform","translate(0," + height + ")").call(d3.axisBottom(x));
   svg.append("text").attr("x",220).attr("y",460).style("text-anchor","middle").text("Engine Cylinders");
 
-  var y = d3.scaleLinear().domain([0,36]).range([height,0]);
+  var y = d3.scaleLinear().domain([0,40]).range([height,0]);
   svg.append("g").call(d3.axisLeft(y));
   svg.append("text").attr("x",-235).attr("y",-25).style("text-anchor","middle").text("MPG").attr("transform","rotate(-90)");
 
