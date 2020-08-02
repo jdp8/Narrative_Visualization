@@ -24,7 +24,7 @@
   font-weight: bold;
 } 
 </style>
-<h1>Miles Per Gallon (MPG) vs Engine Cylinders</h1>
+<h1>Fuel Efficiency and Engine Cylinders</h1>
 <div id="buttons_container">
   <button type="button" onclick="changeText(1)">Scene 1</button>
   <button type="button" onclick="changeText(2)">Scene 2</button>
@@ -39,11 +39,11 @@
 function changeText(n) {
       var text = document.getElementById("scene_text");
       if(n == 1) {
-          text.textContent = "This dataset shows that usually if a car has more cylinders then it will offer less miles per gallon "+
+          text.textContent = "This chart shows that usually if a car has more cylinders then it will offer less miles per gallon "+
           "thus making it less fuel efficient.";
       }
       else if(n == 2) {
-          text.textContent = "Usually if a car has more cylinders, then it will generate more horsepower as shown by the size of the dots.";
+          text.textContent = "On the other hand, if a car has more cylinders, then it will generate more horsepower as shown by the size of the dots.";
       }
       else if(n == 3) {
           text.textContent = "Mouseover the data to see additional information about the cars.";
