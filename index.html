@@ -71,7 +71,7 @@ d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b99
 
   // Add a scale for bubble color
   var myColor = d3.scaleOrdinal().domain(["Mazda","Datsun","Hornet","Valiant","Duster","Merc","Cadillac","Lincoln","Chrysler","Fiat","Honda","Toyota"
-                ,"Dodge","AMC","Camaro","Pontiac","Porsche","Lotus","Ford","Ferrari","Maserati","Volvo"]).range(d3.schemeSet3);
+                ,"Dodge","AMC","Camaro","Pontiac","Porsche","Lotus","Ford","Ferrari","Maserati","Volvo"]).range(d3.schemeCategory20);
 
   var tooltip = d3.select("#svg_container").append("div").style("opacity",0).attr("class","tooltip") .style("background-color","black")
       .style("border-radius","5px")
