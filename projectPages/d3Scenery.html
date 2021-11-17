@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<style>
+.bubbles {
+  stroke-width: 2px;
+  stroke: white;
+}
+.bubbles:hover {
+  stroke: black;
+}
+#buttons_container {
+  position: absolute;
+  left: 145px;
+}
+#scene_text_div {
+  position: absolute;
+  top: 280px;
+  left: 130px;
+  width: 170px;
+  word-wrap: break-word;
+}
+#scene_text {
+  font-weight: bold;
+} 
+</style>
+<h1>Fuel Efficiency and Engine Cylinders</h1>
+<div id="buttons_container">
+  <button type="button" onclick="changeText(1)">Scene 1</button>
+  <button type="button" onclick="changeText(2)">Scene 2</button>
+  <button type="button" onclick="changeText(3)">Scene 3</button>
+</div>
+<div id="svg_container"></div>
+<div id="scene_text_div">
+  <p id="scene_text">Click on the scene buttons to advance the story</p>
+</div>
+
+<script>
+function changeText(n) {
+      var text = document.getElementById("scene_text");
+      if(n == 1) {
+          text.textContent = "This chart shows that usually if a car has more cylinders then it will offer less miles per gallon "+
+          "thus making it less fuel efficient.";
+      }
+      else if(n == 2) {
+          text.textContent = "On the other hand, if a car has more cylinders, then it will generate more horsepower as shown by the size of the dots.";
+      }
+      else if(n == 3) {
+          text.textContent = "Mouseover the data to see additional information about the cars.";
+      }
+}
+  
+var margin = {top:10,right:20,bottom:30,left:50},
+    width = 500 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var svg = d3.select("#svg_container").append("svg").attr("width",width + margin.left + margin.right).attr("height",height + margin.top + margin.bottom)
+  .append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("https://gist.githubusercontent.com/noamross/e5d3e859aa0c794be10b/raw/b999fb4425b54c63cab088c0ce2c0d6ce961a563/cars.csv",function(data) {
+  var x = d3.scaleLinear().domain([0,10]).range([0,width]);
+  svg.append("g").attr("transform","translate(0," + height + ")").call(d3.axisBottom(x));
+  svg.append("text").attr("x",220).attr("y",460).style("text-anchor","middle").text("Number of Engine Cylinders");
+
+  var y = d3.scaleLinear().domain([0,36]).range([height,0]);
+  svg.append("g").call(d3.axisLeft(y));
+  svg.append("text").attr("x",-235).attr("y",-25).style("text-anchor","middle").text("Miles per Gallon").attr("transform","rotate(-90)");
+
+  // Add a scale for bubble size
+  var z = d3.scaleLinear().domain([1,300]).range([7,12]);
+
+  // Add a scale for bubble color
+  var myColor = d3.scaleOrdinal().domain(["Mazda","Datsun","Hornet","Valiant","Duster","Merc","Cadillac","Lincoln","Chrysler","Fiat","Honda","Toyota"
+                ,"Dodge","AMC","Camaro","Pontiac","Porsche","Lotus","Ford","Ferrari","Maserati","Volvo"]).range(d3.schemeCategory20);
+
+  var tooltip = d3.select("#svg_container").append("div").style("opacity",0).attr("class","tooltip") .style("background-color","black")
+      .style("border-radius","5px")
+      .style("padding","10px")
+      .style("color","white")
+
+  var showTooltip = function(d) {
+    tooltip.transition().duration(200)
+    tooltip.style("opacity",1).html("Car make and model: " + d[""] + "<br>Horsepower: " + d.hp + "<br>Engine cylinders: " + d.cyl + 
+                                   "<br>MPG: " + d.mpg + "<br>Weight (lbs): " + d3.format(",")(d.wt*1000) + "<br>1/4 mile time (seconds): " + 
+                                   d.qsec)
+      .style("left",(d3.mouse(this)[0]+30) + "px")
+      .style("top",(d3.mouse(this)[1]+30) + "px")
+  }
+  var moveTooltip = function(d) {
+    tooltip.style("left",(d3.mouse(this)[0]+30) + "px").style("top", (d3.mouse(this)[1]+30) + "px")
+  }
+  var hideTooltip = function(d) {
+    tooltip.transition().duration(200).style("opacity",0)
+  }
+
+  // Add circles
+  svg.append('g').selectAll("dot").data(data).enter().append("circle").attr("class","bubbles")
+      .attr("cx",function(d) { return x(d.cyl); } )
+      .attr("cy",function(d) { return y(d.mpg); } )
+      .attr("r",function(d) { return z(d.hp); } )
+      .style("fill",function(d) { return myColor(d[""].split(" ")[0]); } )
+    .on("mouseover",showTooltip)
+    .on("mousemove",moveTooltip)
+    .on("mouseleave",hideTooltip)
+  })
+</script>
+
